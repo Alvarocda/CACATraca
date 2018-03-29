@@ -1,0 +1,11 @@
+c:\users\alvaro.fasipe\source\repos\PadraoCatraca\PadraoCatraca\bin\Debug\PadraoCatraca.exe.config
+c:\users\alvaro.fasipe\source\repos\PadraoCatraca\PadraoCatraca\bin\Debug\PadraoCatraca.exe
+c:\users\alvaro.fasipe\source\repos\PadraoCatraca\PadraoCatraca\bin\Debug\PadraoCatraca.pdb
+c:\users\alvaro.fasipe\source\repos\PadraoCatraca\PadraoCatraca\obj\Debug\PadraoCatraca.csprojResolveAssemblyReference.cache
+c:\users\alvaro.fasipe\source\repos\PadraoCatraca\PadraoCatraca\obj\Debug\PadraoCatraca.Form1.resources
+c:\users\alvaro.fasipe\source\repos\PadraoCatraca\PadraoCatraca\obj\Debug\PadraoCatraca.Properties.Resources.resources
+c:\users\alvaro.fasipe\source\repos\PadraoCatraca\PadraoCatraca\obj\Debug\PadraoCatraca.csproj.GenerateResource.cache
+c:\users\alvaro.fasipe\source\repos\PadraoCatraca\PadraoCatraca\obj\Debug\PadraoCatraca.csproj.CoreCompileInputs.cache
+c:\users\alvaro.fasipe\source\repos\PadraoCatraca\PadraoCatraca\obj\Debug\PadraoCatraca.exe
+c:\users\alvaro.fasipe\source\repos\PadraoCatraca\PadraoCatraca\obj\Debug\PadraoCatraca.pdb
+c:\users\alvaro.fasipe\source\repos\PadraoCatraca\PadraoCatraca\obj\Debug\PadraoCatraca.Ajuda.resources
