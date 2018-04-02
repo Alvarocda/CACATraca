@@ -15,8 +15,9 @@ namespace PadraoCatraca
 {
     public partial class Form1 : Form
     {
-
-
+        public int TotalNumerosRA { get; set; }
+        public String UltimoUsuarioProcessado { get; set; }
+        public Boolean ProcessoParcial { get; set; }        
         public Form1()
         {
             InitializeComponent();
@@ -30,18 +31,33 @@ namespace PadraoCatraca
             }
             else
             {
-                LeEPadronizaArquivoAsync();
-            }
-            
+                if (String.IsNullOrEmpty(TxtQtdNumerosRA.Text))
+                {
+                    TxtQtdNumerosRA.Text = "16";
+                }
+                try
+                {
+                    TotalNumerosRA = Int32.Parse(TxtQtdNumerosRA.Text);
+                    if(TotalNumerosRA <= 0)
+                    {
+                        MessageBox.Show("Por favor, insira um numero maior que 0", "Erro",  MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                    }
+                    else
+                    {
+                        LeEPadronizaArquivoAsync();
+                    }
+                }catch(Exception ex)
+                {
+                    MessageBox.Show("Erro 666: Por favor, utilize apenas numeros no campo Qtd Numeros R.A\n"+ex.Message,"Erro",MessageBoxButtons.OK,MessageBoxIcon.Hand);
+                }                
+            }            
         }
-
         private void BtnBuscarArquivo_Click(object sender, EventArgs e)
         {
             OpenFileDialog ProcuraArquivo = new OpenFileDialog();
             ProcuraArquivo.InitialDirectory = "C:\\";
             ProcuraArquivo.ShowDialog();
             TxtCaminhoArquivo.Text = ProcuraArquivo.FileName;
-
         }
         public void LeEPadronizaArquivoAsync()
         {
@@ -59,29 +75,53 @@ namespace PadraoCatraca
                     var texto = linha.Split(',');
                     try
                     {
-                        CriarArquivoPadronizado.WriteLine("" + texto[0].PadLeft(16, '0') + texto[1].PadRight(40, ' ').Substring(0,35) + "00110");
-                        ContadorRegistros = ContadorRegistros + 1;
-                        LabelTotal.Text = "" + ContadorRegistros;
+                        if (ContadorRegistros < 4999)
+                         {
+                             CriarArquivoPadronizado.WriteLine("" + texto[0].PadLeft(TotalNumerosRA, '0') + texto[1].PadRight(40, ' ').Substring(0, 40) + "00110");
+                             ContadorRegistros = ContadorRegistros + 1;
+                             LabelTotal.Text = "" + ContadorRegistros;
+                             UltimoUsuarioProcessado = "" + texto[0].PadLeft(TotalNumerosRA, '0') + texto[1].PadRight(40, ' ').Substring(0, 40) + "00110";
+                             ProcessoParcial = false;
+                        }
+                        else
+                        {
+                             LabelTotal.Text = "5000";
+                             ProcessoParcial = true;
+                             ContadorRegistros = ContadorRegistros + 1;
+                        }                        
                     }
                     catch (Exception e)
                     {
-                        MessageBox.Show(e.Message);
+                        MessageBox.Show("Não foi possivel criar o arquivo no disco C\nErro.: "+e.Message);
                     }
                 }
-                CriarArquivoPadronizado.Close();
-                Process.Start("explorer.exe", "C:\\");
-                MessageBox.Show("Padronização concluida\n" +
-                    "ARQUIVO ESTA EM: C:\\");
+                if (ProcessoParcial)
+                {
+                    CriarArquivoPadronizado.Close();
+                    ContadorRegistros = ContadorRegistros - 5000;
+                    MessageBox.Show("Foram processados apenas os 5000 primerios usuarios pois é o limite maximo da catraca\n" +
+                    "Quantidade de registros não processados: " + ContadorRegistros + "\n" +
+                    "Ultimo usuario processado.: " + UltimoUsuarioProcessado + "\nARQUIVO ESTA EM C:\\", "Aviso",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                    Process.Start("explorer.exe", "C:\\");
+                }
+                else
+                {
+                    CriarArquivoPadronizado.Close();
+                    MessageBox.Show("Padronização concluida\n" +
+                        "ARQUIVO ESTA EM: C:\\", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Process.Start("explorer.exe", "C:\\");
+                }
             }
             catch(Exception e)
             {
-                MessageBox.Show(""+ e.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            
+                MessageBox.Show("Não foi possivel encontrar o arquivo a ser padronizado\nErro.: "+ e.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+            }            
         }
         private void ajudaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             new Ajuda().Show();
         }
+
+        
     }
 }

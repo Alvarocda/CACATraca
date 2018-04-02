@@ -162,7 +162,7 @@
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(153, 13);
             this.label14.TabIndex = 14;
-            this.label14.Text = "SINOP 28/03/2018 21:08";
+            this.label14.Text = "SINOP 02/04/2018 16:28";
             // 
             // label15
             // 
