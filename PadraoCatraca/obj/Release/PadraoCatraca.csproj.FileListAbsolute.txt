@@ -8,4 +8,4 @@ c:\users\alvaro.fasipe\source\repos\PadraoCatraca\PadraoCatraca\obj\Release\Padr
 c:\users\alvaro.fasipe\source\repos\PadraoCatraca\PadraoCatraca\obj\Release\PadraoCatraca.csproj.CoreCompileInputs.cache
 c:\users\alvaro.fasipe\source\repos\PadraoCatraca\PadraoCatraca\obj\Release\PadraoCatraca.exe
 c:\users\alvaro.fasipe\source\repos\PadraoCatraca\PadraoCatraca\obj\Release\PadraoCatraca.pdb
-C:\Users\alvaro.FASIPE\source\repos\PadraoCatraca\PadraoCatraca\obj\Release\PadraoCatraca.csprojResolveAssemblyReference.cache
+C:\Users\alvaro.FASIPE\source\repos\PadraoCatraca\PadraoCatraca\obj\Release\PadraoCatraca.csprojAssemblyReference.cache

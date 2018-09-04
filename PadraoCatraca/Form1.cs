@@ -77,7 +77,10 @@ namespace PadraoCatraca
                     {
                         if (ContadorRegistros < 4999)
                          {
-                             CriarArquivoPadronizado.WriteLine("" + texto[0].PadLeft(TotalNumerosRA, '0') + texto[1].PadRight(40, ' ').Substring(0, 40) + "00110");
+                            byte[] byteTemporario;
+                            byteTemporario = System.Text.Encoding.GetEncoding("ISO-8859-8").GetBytes("" + texto[0].PadLeft(TotalNumerosRA, '0') + texto[1].PadRight(40, ' ').Substring(0, 40) + "00110");
+                            CriarArquivoPadronizado.WriteLine(System.Text.Encoding.UTF8.GetString(byteTemporario));
+                            //CriarArquivoPadronizado.WriteLine("" + texto[0].PadLeft(TotalNumerosRA, '0') + texto[1].PadRight(40, ' ').Substring(0, 40) + "00110");
                              ContadorRegistros = ContadorRegistros + 1;
                              LabelTotal.Text = "" + ContadorRegistros;
                              UltimoUsuarioProcessado = "" + texto[0].PadLeft(TotalNumerosRA, '0') + texto[1].PadRight(40, ' ').Substring(0, 40) + "00110";
